@@ -1,7 +1,7 @@
 from fastapi import HTTPException, status
 from fastapi.encoders import jsonable_encoder
 
-from app.models.user import UserModel, UpdateUserModel
+from app.models import UserModel, UpdateUserModel
 from typing import List
 
 from . import db

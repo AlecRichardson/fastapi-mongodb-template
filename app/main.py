@@ -7,7 +7,6 @@ from fastapi.encoders import jsonable_encoder
 import motor.motor_asyncio
 from typing import Optional, List
 
-from .models import StudentModel, UpdateStudentModel
 from .routers import user
 
 app = FastAPI()

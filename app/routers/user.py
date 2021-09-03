@@ -2,7 +2,7 @@ from fastapi import APIRouter, status
 from fastapi.responses import JSONResponse
 
 import app.database.user as user_helpers
-from app.models.user import UserModel, UpdateUserModel
+from app.models import UserModel, UpdateUserModel
 from typing import List
 
 from .helpers import create_route_v1, create_response
