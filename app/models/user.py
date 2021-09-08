@@ -1,14 +1,15 @@
 from bson import ObjectId
-from pydantic import BaseModel, Field, EmailStr
+from pydantic import BaseModel, Field, EmailStr, SecretBytes
 from typing import Optional
 from .fields import PyObjectId
 
 
-class UserModel(BaseModel):
+class User(BaseModel):
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
     first_name: str = Field(...)
     last_name: str = Field(...)
     email: EmailStr = Field(...)
+    password: SecretBytes = Field(...)
 
     class Config:
         allow_population_by_field_name = True
@@ -19,13 +20,15 @@ class UserModel(BaseModel):
                 "first_name": "Jane",
                 "last_name": "Doe",
                 "email": "jdoe@example.com",
+                "password": "Passw0rd!"
             }
         }
 
-class UpdateUserModel(BaseModel):
+class UpdateUser(BaseModel):
     first_name: Optional[str]
     last_name: Optional[str]
     email: Optional[EmailStr]
+    password: Optional[SecretBytes]
 
     class Config:
         arbitrary_types_allowed = True
@@ -35,5 +38,6 @@ class UpdateUserModel(BaseModel):
                 "first_name": "Jane",
                 "last_name": "Doe",
                 "email": "jdoe@example.com",
+                "password": "Passw0rd!"
             }
         }
